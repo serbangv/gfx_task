@@ -25,12 +25,14 @@ The interest deposit should be a permission-less instruction where the check for
 4. `pay_interest`: Pays interest.
 
 ### How to Run
-1. `anchor test` - will create a new SPL token for each run, create a vault, deposit tokens and pays interest (if specified).
-2. `cargo run` (in `gfx-task-client/`) - will call the crank using the rust client
+1. `anchor build` and update the new program ID in `Anchor.toml`, `programs/gfx-task/src/lib.rs` (`declare_id!()`) and `gfx-task-client/src/main.rs` (`GFX_TASK_PROGRAM_ID`)
+2. Start local validator, `solana-test-validator`
+3. `anchor test --skip-local-validator` - will create a new SPL token for each run, create a vault, deposit tokens and pays interest (if specified).
+4. `cargo run` (in `gfx-task-client/`) - will call the crank using the rust client
 
 Repeating step 2 without creating new vaults, it will return an error for each vault since the interest for the current month has already been paid.
 
-The ts tests can also call the crank if called with `INCLUDE_PAY_INTEREST=true anchor test`.
+The ts tests can also call the crank if called with `INCLUDE_PAY_INTEREST=true anchor test --skip-local-validator`.
 
 
 ### Simplification
