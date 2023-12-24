@@ -1,0 +1,17 @@
+[package]
+name = "gfx-task-client"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+anchor-client = { version = "0.29.0", features = ["debug", "async"] }
+anyhow = "1.0.76"
+shellexpand = "3.1.0"
+solana-client = "1.17.13"
+solana-sdk = "1.17.13"
+tokio = "1.35.1"
+gfx-task = { path = "../programs/gfx-task" }
+anchor-spl = "0.29.0"
+solana-account-decoder = "1.17.13"
